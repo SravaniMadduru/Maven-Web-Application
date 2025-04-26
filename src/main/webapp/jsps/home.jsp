@@ -9,7 +9,7 @@
 </head>
 </head>
 <body>
-<h1 align="center">Welcome to Mithun Technologies - Poll SCM Demo</h1>
+<h1 align="center">Welcome to Mithun Technologies - Github Webhook Demo</h1>
 <h1 align="center">Phone Number: +91 9980923216</h1>
 <h1 align="center">Mithun Technologies is a Very Good Training Center for DevOps, Cloud, Kubernetes and Terraform---checking for automation</h1>
 
