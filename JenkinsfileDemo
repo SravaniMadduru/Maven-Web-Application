@@ -1,4 +1,4 @@
-node('slave-node1'){
+node('nodes'){
 
 def mavenHome = tool name: "maven3.9.7"
 
