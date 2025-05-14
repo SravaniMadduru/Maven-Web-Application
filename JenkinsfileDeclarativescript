@@ -1,0 +1,74 @@
+pipeline{
+agent {
+label 'slave-node1'
+}
+
+tools{
+maven 'maven3.9.7'
+}
+
+	options {
+	  timestamps()
+	  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')
+	}
+
+stages{
+
+stage('CheckoutCode'){
+steps{
+git branch: 'development', credentialsId: '99de4796-aa40-4772-9888-9abda26162c0', url: 'https://github.com/SravaniMadduru/Maven-Web-Application.git'
+}
+}
+
+stage('Build'){
+steps{
+sh "mvn clean package"
+}
+}
+
+/*
+stage('ExecuteSonarQubeReport'){
+steps{
+sh "mvn sonar:sonar"
+}
+}
+
+stage('UploadArtifactsIntoNexus'){
+steps{
+sh "mvn deploy"
+}
+}
+
+stage('DeployAppIntoTomcatServer'){
+steps{
+sshagent(['d81ee727-5294-4539-82fa-843332593943']) {
+sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.0.27.140:/opt/apache-tomcat-9.0.104/webapps/"
+}
+}
+*/
+
+}//stages closing
+}//pipeline closing
+
+/*
+post{
+always{
+emailext body: '''Build over..
+
+Regards,
+Sravani Madduru.''', subject: 'Build over', to: 'sravanimadduru@gmail.com'
+}
+aborted{
+emailext body: '''Build aborted..
+
+Regards,
+Sravani Madduru.''', subject: 'Build aborted', to: 'sravanimadduru@gmail.com'
+}
+failure{
+emailext body: '''Build failure..
+
+Regards,
+Sravani Madduru.''', subject: 'Build failure', to: 'sravanimadduru@gmail.com'
+}
+}
+*/
