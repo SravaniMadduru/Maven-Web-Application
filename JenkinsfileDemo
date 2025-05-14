@@ -2,7 +2,7 @@ node{
 
 def mavenHome = tool name: "maven3.9.7"
 
-echo "checking mbpl proj"
+echo "checking mbpl proj-poll scm"
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))])
 
